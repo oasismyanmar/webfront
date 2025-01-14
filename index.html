@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oasis Myanmar - Entertainment Hub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e50914;
+            --dark-bg: #141414;
+            --light-text: #ffffff;
+            --card-bg: rgba(0, 0, 0, 0.75);
+            --nav-bg: rgba(0, 0, 0, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            padding: 1rem;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            padding: 1rem;
+            z-index: 1000;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .mobile-nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://www.pixelstalk.net/wp-content/uploads/image11/Batman-lighting-up-the-night-sky-with-dark-clouds-rolling-in-over-Gotham.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            overflow: hidden; /* Ensure animations don't overflow */
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: white;
+            animation: fadeInDown 1.5s ease-out; /* Add fadeInDown animation */
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: white;
+            animation: fadeInUp 1.5s ease-out 0.5s, float 3s ease-in-out infinite; /* Add fadeInUp and float animations */
+        }
+        
+        /* Keyframes for Animations */
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            background: var(--dark-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: var(--light-text);
+            display: block;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            text-decoration: none;
+            color: var(--light-text);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 2rem;
+            background: var(--dark-bg);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            background: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.3s;
+        }
+
+        .add-to-cart:hover {
+            opacity: 0.9;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 4rem 2rem;
+            background: var(--dark-bg);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .review-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: var(--dark-bg);
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--light-text);
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Cart */
+        .cart {
+            position: fixed;
+            right: -100%;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background: var(--nav-bg);
+            padding: 2rem;
+            transition: right 0.3s;
+            z-index: 1001;
+        }
+
+        .cart.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .checkout-btn {
+            background: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">OASIS MYANMAR</div>
+            <div class="nav-links">
+                <a href="#home">HOME</a>
+                <a href="#services">SERVICE</a>
+                <a href="#products">PRODUCT</a>
+                <a href="#contact">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-links">
+            <a href="#home"><i class="fas fa-home"></i></a>
+            <a href="#services"><i class="fas fa-cog"></i></a>
+            <a href="#products"><i class="fas fa-shopping-bag"></i></a>
+            <a href="#contact"><i class="fas fa-envelope"></i></a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>Oasis Myanmar</h1>
+        <p class="slogan">ကောင်းတာတွေပဲလုပ်ပါ မကောင်းတာတွေ သူ့ဘာသူဖြစ်လာပါမယ်!</p>
+    </div>
+</section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title">ဝန်ဆောင်မှုများ</h2>
+        <div class="services-grid">
+            <a href="/movie-service" class="service-card">
+                <i class="fas fa-film"></i>
+                <h3>Movie and Series</h3>
+                <p>များစွာသော အောကားများ ကူးယူနိုင်ပါသည်</p>
+            </a>
+            <a href="/game-shop" class="service-card">
+                <i class="fas fa-gamepad"></i>
+                <h3>ဂိမ်းဆိုင်</h3>
+                <p>နောက်ဆုံးထွက် ဂိမ်းများကို အချိန်မရွေးဆေးချရင်းဆော့ကစားနိုင်ပါသည်s</p>
+            </a>
+            <a href="/it-products" class="service-card">
+                <i class="fas fa-laptop"></i>
+                <h3>IT ပစ္စည်းများ</h3>
+                <p>ကွာလတီကောင်းမွန်သော IT (Jinn Tat)ပစ္စည်းများ ဈေးသက်သာစွာဝယ်ယူနိုင်သည်</p>
+            </a>
+            <a href="/movie-app" class="service-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Movie App</h3>
+                <p>ရုပ်ရှင်များ ပြန်လည်ရောင်းချလိုသော တောသီး များအတွက်</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <h2 class="section-title">ရရှိနိုင်သောပစ္စည်းများ</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://i.pcmag.com/imagery/reviews/043DROGFihmSgG7S6LUb006-1.fit_lim.size_919x518.v1709854231.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Gaming Laptop</h3>
+                    <p class="product-price">1000 MMK</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/61sc+A9KapL.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Gaming Console</h3>
+                    <p class="product-price">2000 MMK</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://i.etsystatic.com/51735468/r/il/5ba40d/6317438619/il_300x300.6317438619_b8qp.jpg" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Movie Collection</h3>
+                    <p class="product-price">3000 MMK</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <h2 class="section-title">ရင်တွင်းဖြစ် စကားများ</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <img src="https://scontent-sin2-2.xx.fbcdn.net/v/t39.30808-1/449987117_122113357844353135_3754534218384290145_n.jpg?stp=c0.0.1200.1200a_dst-jpg_s200x200_tt6&_nc_cat=107&ccb=1-7&_nc_sid=1d2534&_nc_ohc=nIq_PLHJn4cQ7kNvgHEzVQw&_nc_zt=24&_nc_ht=scontent-sin2-2.xx&_nc_gid=AW_TkYrYMGFAAwHVdf8INkq&oh=00_AYB5Wbd7B6tw6yUgJh1k1EvppuM1sp_ZF9j_VkEhYw893A&oe=678BFBA9" alt="Customer 1" class="review-image">
+                <h3>Chit Min Zaw</h3>
+                <p>"ဆိုင်ရှင်က ရုပ်ဆိုးပေမဲ့ ဆားဗစ်က ရှယ်ပါ"</p>
+            </div>
+            <div class="review-card">
+                <img src="https://scontent-sin11-1.xx.fbcdn.net/v/t39.30808-1/363389553_2547990942016518_9112350171019553987_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=104&ccb=1-7&_nc_sid=1d2534&_nc_ohc=svMusGeLp3oQ7kNvgHnUtAt&_nc_zt=24&_nc_ht=scontent-sin11-1.xx&_nc_gid=AaFgP2zhM7YGWjMAU1rCmto&oh=00_AYDr043516R3Lho6Jgz1r9pj5QLk6LCH2xV9AjW2YvDiRA&oe=678BF36E" alt="Customer 2" class="review-image">
+                <h3>Nanda Kyaw</h3>
+                <p>"အရမ်းကောင်းတယ် စတော်ဘယ်ရီလိုပဲ :3!"</p>
+            </div>
+            <div class="review-card">
+                <img src="https://scontent-sin2-2.xx.fbcdn.net/v/t1.6435-9/94638272_746958759175229_5699086280810299392_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=G4H7qdPQvO8Q7kNvgH5Cmva&_nc_zt=23&_nc_ht=scontent-sin2-2.xx&_nc_gid=AFVw_gpMko6RltrBdGQUC3f&oh=00_AYDOuQDIGhkpRjLwRzuOMGWvL_6R8kXN5n0WXOc73zxIqQ&oe=67AD978E" alt="Customer 3" class="review-image">
+                <h3>Sithu Aung</h3>
+                <p>"စိတ်ထားကောင်းသလို ရုပ်ချောဖို့လဲလိုပါသေးတယ်!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">ဆက်သွယ်ရန်</h2>
+        <p>တောသားများ မနှိပ်ရ!(တောသူနှိပ်လို့ရပါသည်)</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-viber"></i></a>
+        </div>
+    </section>
+
+    <!-- Cart -->
+    <div class="cart">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items"></div>
+        <button class="checkout-btn">Checkout</button>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'var(--nav-bg)';
+            } else {
+                navbar.style.background = 'transparent';
+            }
+        });
+
+        // Cart functionality
+        const cart = document.querySelector('.cart');
+        const closeCartBtn = document.querySelector('.close-cart');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const cartItemsContainer = document.querySelector('.cart-items');
+
+        // Toggle cart visibility
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('add-to-cart')) {
+                cart.classList.add('active');
+            }
+        });
+
+        closeCartBtn.addEventListener('click', () => {
+            cart.classList.remove('active');
+        });
+
+        // Add to cart logic
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const productCard = button.closest('.product-card');
+                const productTitle = productCard.querySelector('.product-title').innerText;
+                const productPrice = productCard.querySelector('.product-price').innerText;
+                const productImage = productCard.querySelector('.product-image').src;
+
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <img src="${productImage}" alt="${productTitle}">
+                    <div>
+                        <h4>${productTitle}</h4>
+                        <p>${productPrice}</p>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+        });
+    </script>
+</body>
+</html>
