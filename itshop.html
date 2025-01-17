@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Products Sales - Oasis Myanmar</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e50914;
+            --dark-bg: #141414;
+            --light-text: #ffffff;
+            --card-bg: rgba(0, 0, 0, 0.75);
+            --nav-bg: rgba(0, 0, 0, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            padding: 1rem;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            padding-top: 6rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .grid-item {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .grid-item p {
+            padding: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">OASIS MYANMAR</div>
+            <div class="nav-links">
+                <a href="/">HOME</a>
+                <a href="/services">SERVICE</a>
+                <a href="/products">PRODUCT</a>
+                <a href="/contact">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section>
+        <h2 class="section-title">IT Products Sales</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/400x300" alt="Product 1">
+                <p>Product Title 1</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/400x300" alt="Product 2">
+                <p>Product Title 2</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/400x300" alt="Product 3">
+                <p>Product Title 3</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/400x300" alt="Product 4">
+                <p>Product Title 4</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/400x300" alt="Product 5">
+                <p>Product Title 5</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/400x300" alt="Product 6">
+                <p>Product Title 6</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/400x300" alt="Product 7">
+                <p>Product Title 7</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/400x300" alt="Product 8">
+                <p>Product Title 8</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/400x300" alt="Product 9">
+                <p>Product Title 9</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://via.placeholder.com/400x300" alt="Product 10">
+                <p>Product Title 10</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
